@@ -1,1 +1,1 @@
-react app + vite
+social media app based on react + vite
