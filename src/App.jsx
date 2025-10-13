@@ -19,7 +19,6 @@ function App() {
     const[modal, setModal] = useState(false)
 
     const sortedPosts = useMemo(() => {
-        console.log(4)
         if(filter.sort) {
             return posts.toSorted((a, b) => a[filter.sort].localeCompare(b[filter.sort]))
         }
