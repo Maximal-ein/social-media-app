@@ -1,4 +1,4 @@
-import {useContext, useMemo, useState} from 'react';
+import {useMemo, useState} from 'react';
 import './styles/App.css';
 import PostList from "./components/PostList.jsx";
 import PostForm from "./components/PostForm.jsx";
