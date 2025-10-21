@@ -11,6 +11,7 @@ import {useFetching} from "../hooks/useFetching.js";
 import {getPagesCount} from "../utils/pages.js";
 import Pagination from "../components/UI/pagination/Pagination.jsx";
 import {useObserver} from "../hooks/useObserver.js";
+import MySelect from "../components/UI/select/MySelect.jsx";
 
 function Posts() {
 
@@ -35,8 +36,8 @@ function Posts() {
     })
 
     useEffect(() => {
-        fetchPosts(limit,page)
-    }, [page]);
+        fetchPosts(limit, page)
+    }, [limit, page]);
 
     const createPost = (newPost) => {
         setPosts([...posts, newPost])
@@ -63,6 +64,19 @@ function Posts() {
             <PostFilter filter={filter}
                         setFilter={setFilter}
             />
+            <MySelect
+                value={limit}
+                onChange={value => setLimit(value)}
+                defaultValue="Elements amount on page"
+                options={[
+                    {value: 5, name: '5'},
+                    {value: 10, name: '10'},
+                    {value: 25, name: '25'},
+                    {value: -1, name: 'Show all'},
+                ]}
+            >
+
+            </MySelect>
             {postError &&
                 <h1>Error: {postError}</h1>
             }
