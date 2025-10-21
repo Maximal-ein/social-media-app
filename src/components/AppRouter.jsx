@@ -1,17 +1,27 @@
-import React from 'react';
-import {Route, Routes} from "react-router-dom";
-import Posts from "../pages/Posts.jsx";
-import About from "../pages/About.jsx";
-import Error from "../pages/Error.jsx";
-import PostIdPage from "../pages/PostIdPage.jsx";
+import React, {useContext} from 'react';
+import {Navigate, Route, Routes} from "react-router-dom";
+import {privateRoutes, publicRoutes} from "../router/routes.js";
+import {AuthContext} from "../context/index.js";
+import Loader from "./UI/Loader/Loader.jsx";
 
 const AppRouter = () => {
+    const {isAuth, isLoading} = useContext(AuthContext)
+    if (isLoading) {
+        return <Loader/>
+    }
+    const routes = isAuth ? privateRoutes : publicRoutes;
+    const fallbackTo = isAuth ? "/posts" : "/login";
+
     return (
         <Routes>
-            <Route path="about" element={<About/>}/>
-            <Route path="posts" element={<Posts/>}/>
-            <Route path="posts/:id" element={<PostIdPage/>}/>
-            <Route path="*" element={<Error/>}/>
+            {routes.map((route) => (
+                <Route
+                    key={route.path}
+                    path={route.path}
+                    element={<route.component />}
+                />
+            ))}
+            <Route path="/*" element={<Navigate to={fallbackTo} replace />} />
         </Routes>
     );
 };
