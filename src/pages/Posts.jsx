@@ -5,7 +5,7 @@ import PostFilter from "../components/PostFilter.jsx";
 import MyModal from "../components/UI/modal/MyModal.jsx";
 import MyButton from "../components/UI/button/MyButton.jsx";
 import {usePosts} from "../hooks/usePosts.js";
-import PostService from "../API/PostService.js";
+import PostService from "../API/PostService.ts";
 import Loader from "../components/UI/Loader/Loader.jsx";
 import {useFetching} from "../hooks/useFetching.js";
 import {getPagesCount} from "../utils/pages.js";
