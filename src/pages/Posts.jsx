@@ -32,7 +32,7 @@ function Posts() {
     })
 
     useObserver(lastElement, page < totalPages, isPostsLoading, () => {
-        setPage(page + 1)
+        setPage(prev => prev + 1)
     })
 
     useEffect(() => {
