@@ -1,7 +1,7 @@
 import {useEffect, useRef, useState} from 'react';
 import PostList from "../components/PostList.jsx";
 import PostForm from "../components/PostForm.jsx";
-import PostFilter from "../components/PostFilter.jsx";
+import PostFilter from "../components/PostFilter.tsx";
 import MyModal from "../components/UI/modal/MyModal.jsx";
 import MyButton from "../components/UI/button/MyButton.jsx";
 import {usePosts} from "../hooks/usePosts.js";
@@ -11,7 +11,7 @@ import {useFetching} from "../hooks/useFetching.js";
 import {getPagesCount} from "../utils/pages.js";
 import Pagination from "../components/UI/pagination/Pagination.jsx";
 import {useObserver} from "../hooks/useObserver.js";
-import MySelect from "../components/UI/select/MySelect.jsx";
+import MySelect from "../components/UI/select/MySelect";
 
 function Posts() {
 
@@ -69,10 +69,10 @@ function Posts() {
                 onChange={value => setLimit(value)}
                 defaultValue="Elements amount on page"
                 options={[
-                    {value: 5, name: '5'},
-                    {value: 10, name: '10'},
-                    {value: 25, name: '25'},
-                    {value: -1, name: 'Show all'},
+                    {value: 5, content: '5'},
+                    {value: 10, content: '10'},
+                    {value: 25, content: '25'},
+                    {value: -1, content: 'Show all'},
                 ]}
             >
 

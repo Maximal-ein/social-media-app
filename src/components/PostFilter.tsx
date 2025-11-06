@@ -1,8 +1,15 @@
-import React from 'react';
 import MyInput from "./UI/input/MyInput.jsx";
-import MySelect from "./UI/select/MySelect.jsx";
+import MySelect from './UI/select/MySelect';
 
-const PostFilter = ({filter, setFilter}) => {
+interface PostFilterProps {
+    filter: {
+        query: string;
+        sort: string;
+    };
+    setFilter: (filter: { query: string; sort: string }) => void;
+}
+
+const PostFilter = ({filter, setFilter}: PostFilterProps) => {
     return (
         <div>
             <MyInput
@@ -15,8 +22,8 @@ const PostFilter = ({filter, setFilter}) => {
                 onChange={selectedSort => setFilter({...filter, sort: selectedSort})}
                 defaultValue='Sort'
                 options={[
-                    {value: 'title', name: 'By name'},
-                    {value: 'body', name: 'By desc'}
+                    {value: 'title', content: 'By name'},
+                    {value: 'body', content: 'By desc'}
                 ]}
             />
         </div>
